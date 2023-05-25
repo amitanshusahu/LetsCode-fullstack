@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+}
+body{
+    padding: 30px;
+    max-width: 1444px;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+input{
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+}
+button{
+    border: grey;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+a{
+    all: unset;
+    display: block;
+    cursor: pointer;
+}
