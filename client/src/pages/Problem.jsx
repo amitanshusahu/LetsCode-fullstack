@@ -65,18 +65,12 @@ const StyledDiv = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 30px;
 
-    @keyframes fade {
-        from{ opacity: 0; }
-        to{ opacity:1; }
-    }
-
     .parentlayout{
         border: 2px solid #f0f0f0;
         padding: 20px;
         border-radius: 10px;
         overflow-x: hidden;
         overflow-y: scroll;
-        animation: fade ease 0.5s;
 
         #info, #note{
             margin: 15px 0px;

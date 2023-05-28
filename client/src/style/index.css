@@ -6,6 +6,11 @@
     text-decoration: none;
     box-sizing: border-box;
     font-family: 'DM Sans', sans-serif;
+    animation: fade 0.3s ease;
+}
+@keyframes fade {
+    from{opacity: 0;}
+    to{opacity: 1;}
 }
 body{
     padding: 30px;
