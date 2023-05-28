@@ -1,37 +1,35 @@
 import styled from "styled-components";
 import Navbar from "./components/Navbar";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 
 /*
  * Temporary problems array schema
  */
-const problems = [{
-    problemId: 1,
-    title: "Bitwise AND of Numbers Range",
-    difficulty: "Medium",
-    acceptance: "42%"
-}, {
-    problemId: 2,
-    title: "Bitwise AND of Numbers Range",
-    difficulty: "Medium",
-    acceptance: "412%"
-},
-{
-    problemId: 3,
-    title: "Happy Number",
-    difficulty: "Easy",
-    acceptance: "54.9%"
-},
-{
-    problemId: 4,
-    title: "Remove Linked List Elements",
-    difficulty: "Hard",
-    acceptance: "42%"
-}];
+
 
 export default function Problemset() {
 
     const navigate = useNavigate();
+
+    const [problems, setProblems] = useState([]);
+
+    const init = async () => {
+        const response = await fetch(`http://localhost:3010/problems`, {
+            method: "GET",
+        });
+
+        const json = await response.json();
+        setProblems(json.problems.problems);
+    }
+
+    useEffect(() => {
+        init()
+    }, []);
+
+
+
 
     return (
         <>
@@ -49,7 +47,7 @@ export default function Problemset() {
                         {
                             problems.map(ele => {
                                 return (
-                                    <tr onClick={() => {navigate(`/problem?${ele.problemId}`)}}>
+                                    <tr onClick={() => { navigate(`/problem?pid=${ele.problemId}`) }}>
                                         <td>{ele.problemId + " . " + ele.title}</td>
                                         {getdifficultyColor(ele.difficulty.toLocaleLowerCase(), "td")}
                                         <td>{ele.acceptance}</td>

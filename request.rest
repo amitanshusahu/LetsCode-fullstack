@@ -1,0 +1,108 @@
+POST http://localhost:3010/login
+Content-Type:  application/json
+
+{
+    "username" : "amith",
+    "password" : "12345"
+}
+
+###
+
+POST http://localhost:3010/signup
+Content-Type:  application/json
+
+{
+    "username" : "anjali",
+    "password" : "12345"
+}
+
+###
+
+GET http://localhost:3010/pro
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW1pdGgiLCJpYXQiOjE2ODUyMTg4MzF9.W-sOZLi1xrZiW8QmL8BKFLlsApzt9Qe17J7kX0bJV9o
+
+### get problems
+
+GET http://localhost:3010/problems
+
+### get problem using problem id
+
+GET http://localhost:3010/problem?problemid=2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW1pdGgiLCJpYXQiOjE2ODUyMTg4MzF9.W-sOZLi1xrZiW8QmL8BKFLlsApzt9Qe17J7kX0bJV9o
+
+### Run code for debugging
+
+POST http://localhost:3010/run
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW1pdGgiLCJpYXQiOjE2ODUyMTg4MzF9.W-sOZLi1xrZiW8QmL8BKFLlsApzt9Qe17J7kX0bJV9o
+Content-Type: application/json
+
+{
+    "code" : "console.log('hello')",
+    "language": "js"
+}
+
+### submit code 1
+
+POST http://localhost:3010/submit
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW1pdGgiLCJpYXQiOjE2ODUyMTg4MzF9.W-sOZLi1xrZiW8QmL8BKFLlsApzt9Qe17J7kX0bJV9o
+Content-Type: application/json
+
+{
+    "problem": {
+    "problemId": 1,
+    "title": "Hello World",
+    "difficulty": "Easy",
+    "submissions": 12,
+    "accepted": 10,
+    "acceptance": "95%",
+    "template": null,
+    "solutionfunction": null,
+    "testcases": [
+      {
+        "output": "Hello World"
+      }
+    ]
+  },
+  "code": "console.log('Hello World')",
+  "language": "js"
+
+}
+
+###  submit code 2
+
+POST http://localhost:3010/submit
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW1pdGgiLCJpYXQiOjE2ODUyMTg4MzF9.W-sOZLi1xrZiW8QmL8BKFLlsApzt9Qe17J7kX0bJV9o
+Content-Type: application/json
+
+{
+    "problem": {
+    "problemId": 2,
+    "title": "Sum of 2 Numbers",
+    "difficulty": "Easy",
+    "desc": "\n    the function takes 1 parameter which takes an array 2 numbers as input and prints the sum to the console as output\n\n    ## Example 1\n        - input: [1,2]\n        - output: 3\n\n    ## Example 2\n        - input: [3,2]\n        - output: 5\n    \n    ",
+    "submissions": 12,
+    "accepted": 10,
+    "acceptance": "90%",
+    "template": "",
+    "solutionfunction": "add",
+    "testcases": [
+      {
+        "input": [
+          2,
+          3
+        ],
+        "output": 5
+      },
+      {
+        "input": [
+          1,
+          2
+        ],
+        "output": 3
+      }
+    ]
+  },
+  "code": "function add(num1, num2){ console.log(num1+num2) }",
+  "language": "js"
+
+}

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom";
 import styled from "styled-components"
 
 export default function Login() {
@@ -28,7 +29,7 @@ export default function Login() {
                     <input type="text" name="email" placeholder="Email" onChange={handelInputChange} />
                     <input type="password" name="password" placeholder="Password" onChange={handelInputChange} />
                     <button onClick={handelSubmit}> Create an Account</button>
-                    <p>Already have an account? Login</p>
+                    <Link to={"../login"}><p>Already have an account? Login</p></Link>
                 </form>
             </div>
         </StyledDiv>
@@ -36,8 +37,8 @@ export default function Login() {
 }
 
 const StyledDiv = styled.div`
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: calc(100vh - 60px);
     display: flex;
     justify-content: center;
     align-items:center;

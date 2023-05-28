@@ -27,7 +27,7 @@ export default function Login(){
                     <input type="text" name="email" id="email" placeholder="Email" onChange={handelInputChange}/>
                     <input type="password" name="password" id="password" placeholder="Password" onChange={handelInputChange}/>
                     <button onClick={handelSubmit}>Login</button>
-                    <Link to={"../Signup"}><p>New User? Signup</p></Link>
+                    <Link to={"../signup"}><p>New User? Signup</p></Link>
                 </form>
             </div>
         </StyledDiv>
@@ -35,8 +35,8 @@ export default function Login(){
 }
 
 const StyledDiv = styled.div`
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: calc(100vh - 60px);
     display: flex;
     justify-content: center;
     align-items:center;
