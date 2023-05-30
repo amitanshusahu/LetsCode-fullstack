@@ -42,17 +42,15 @@ let users = [
   {
     username: "amith",
     password: "12345",
-    solved: [1, 3, 4] // problem ids
+    solved: [] // problem ids
   },
   {
     username: "avaya",
     password: "12345",
-    solved: [2, 1]
+    solved: []
   }
 ];
 const problems = require("./problems");
-const { resolve } = require('path');
-const { rejects } = require('assert');
 
 
 
@@ -140,7 +138,7 @@ async function connectRabbitMQ() {
 }
 
 // Publish message to queue
-async function publishMessageToCodeExecutionQueue(connection, channel, code, language, res, problem, isTest) {
+async function publishMessageToCodeExecutionQueue(connection, channel, code, language, req, res, problem, isTest) {
 
   // set up responsequeue (temp)
   const responseQueue = await channel.assertQueue("", { exclusive: true });
@@ -154,6 +152,9 @@ async function publishMessageToCodeExecutionQueue(connection, channel, code, lan
       const result = JSON.parse(msg.content.toString());
       res.status(200).json(result);
       console.log("logging result form the responsequeue: ",result.result);
+
+      if(result.result == true) handelPassedTestCases(code, language, req, res, problem);
+
       channel.close();
       connection.close();
     }
@@ -220,18 +221,23 @@ function getDockerImage(language) {
 function getExecutionCommand(language, code, isTest, solutionfunction, input) {
 
   let cmd;
+  let testcode;
 
   if (isTest) {
     switch (language) {
       case "js":
-        let testcode = code + `${solutionfunction}(${input})`;
-        console.log("code: ", testcode);
+        testcode = code + `${solutionfunction}(${input})`;
         cmd = ["node", "-e", testcode];
+        break;
+      case "c":
+        testcode = code + `int main() { ${solutionfunction}(${input}); }`;
+        cmd = ['bash', '-c', `echo "${testcode}" > myapp.c && gcc -o myapp myapp.c && ./myapp`];
         break;
     
       default:
         break;
     }
+    console.log("Testcode: ", testcode);
   }
   else{
     switch (language) {
@@ -352,6 +358,16 @@ async function compareResult(executionResult, output){
   }
 }
 
+function handelPassedTestCases(code, language, req, res, problem){
+  const username = req.user.name;
+  const user = users.find(user => user.username === username);
+  if(user && !user.solved.includes(problem.problemId)){
+    user.solved.push(problem.problemId);
+    console.log(user);
+  }
+}
+
+
 
 
 ///----------------- ROUTES -----------------------
@@ -390,6 +406,11 @@ app.post('/signup', (req, res) => {
   }
 })
 
+app.get('/me',protect, async (req, res) => {
+  let user = await users.find(user => user.username == req.user.name);
+  res.status(200).json(user);
+})
+
 app.get('/problems', (req, res) => {
   res.json({ problems: problems })
 })
@@ -410,7 +431,7 @@ app.post("/run", protect, async (req, res) => {
   try {
 
     const { connection, channel } = await connectRabbitMQ();
-    await publishMessageToCodeExecutionQueue(connection, channel, code, language, res);
+    await publishMessageToCodeExecutionQueue(connection, channel, code, language, req, res);
 
   }
   catch (er) {
@@ -426,7 +447,7 @@ app.post('/submit', protect, async (req, res) => {
   try {
 
     const { connection, channel } = await connectRabbitMQ();
-    await publishMessageToCodeExecutionQueue(connection, channel, code, language, res, problem, isTest);
+    await publishMessageToCodeExecutionQueue(connection, channel, code, language, req, res, problem, isTest);
 
   }
   catch (er) {

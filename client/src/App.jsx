@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Problemset from "./pages/Problemset";
 import Problem from "./pages/Problem";
+import Home from "./pages/Home";
 
 export default function App() {
     return (
@@ -17,14 +18,6 @@ export default function App() {
             </Routes>
         </BrowserRouter>
     );
-}
-
-function Home() {
-    return (<div>hello</div>)
-}
-
-function Signin() {
-    return (<div>signin</div>)
 }
 
 function NotFound() {

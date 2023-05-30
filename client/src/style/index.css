@@ -12,6 +12,10 @@
     from{opacity: 0;}
     to{opacity: 1;}
 }
+@keyframes load {
+    from{ background-color: #aaa;}
+    to{background-color: #dee6ee;}
+}
 body{
     padding: 30px;
     max-width: 1444px;
@@ -32,9 +36,80 @@ button{
     padding: 10px;
     font-weight: bold;
     text-transform: capitalize;
+    cursor: pointer;
+}
+button:hover{
+    opacity: 0.8;
 }
 a{
     all: unset;
     display: block;
     cursor: pointer;
 }
+
+/* utils */
+#modal{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgb(209, 244, 255);
+    transition: all 0.3s ease;
+}
+
+::selection{
+    background-color: rgb(162, 199, 255);
+}
+
+/* monaco code editor style*/
+
+.codicon-folding-collapsed::before{
+    content: "+" !important;
+}
+
+.codicon-folding-expanded::before {
+    content: '-' !important;
+}
+
+.codicon-light-bulb::before {
+    content: '💡' !important;
+  }
+
+.editor-widget .suggest-widget{
+    border-radius: 10px !important;
+    border: none !important;
+    overflow: hidden !important;
+}
+.editor-widget *{
+    border-color: white !important;
+    outline: none !important;
+}
+.monaco-editor .suggest-widget .monaco-list {
+    /* Autocomplete list background color */
+    background-color: #FFF !important;
+    /* Autocomplete list border */
+    border: none !important;
+    /* Autocomplete list border radius */
+    border-radius: 10px !important;
+    /* Autocomplete list shadow */
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .monaco-editor .suggest-widget .monaco-list .monaco-list-row {
+    /* Autocomplete list item styles */
+    color: #000 !important;
+    padding: 4px 8px !important;
+    min-height: 24px !important;
+    border-radius: 7px !important;
+  }
+
+  .monaco-editor .monaco-sash{
+    display: none !important;
+  }
+
+  #output-box-1{
+    scroll-behavior: smooth;
+    font-family: monospace;
+    transition: all 0.3s ease;
+  }

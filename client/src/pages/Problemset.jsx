@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Token } from "../secrets";
 
 /*
  * Temporary problems array schema
@@ -100,6 +101,7 @@ const StyledDiv = styled.div`
             font-size: larger;
             padding: 15px;
         }
+        
         tr:not(:first-child){
             font-size: medium;
             cursor: pointer;
@@ -108,6 +110,15 @@ const StyledDiv = styled.div`
             }
             td{
                 padding: 10px;
+            }
+        }
+
+        tr{
+            &:hover{
+                cursor: ${
+                    (Token === null)
+                    ? "not-allowed"
+                : "pointer"} 
             }
         }
     }

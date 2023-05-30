@@ -18,7 +18,7 @@ Content-Type:  application/json
 
 ###
 
-GET http://localhost:3010/pro
+GET http://localhost:3010/me
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW1pdGgiLCJpYXQiOjE2ODUyMTg4MzF9.W-sOZLi1xrZiW8QmL8BKFLlsApzt9Qe17J7kX0bJV9o
 
 ### get problems
