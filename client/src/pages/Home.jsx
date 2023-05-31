@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Navbar from "./components/Navbar"
 import githubLogo from "../assets/github.png"
+import ss from "../assets/ss-letscode.png"
 
 export default function Home(){
     return (
@@ -12,13 +13,13 @@ export default function Home(){
                         <img src={githubLogo}/>
                     </div>
                     <div className="action">
-                        <button><span className="icon">⭐</span> Contribute</button>
-                        <button><span className="icon">💛</span> Follow</button>
+                        <button onClick={() => {window.location.replace("https://github.com/amitanshusahu/LetsCode-fullstack")}}><span className="icon">⭐</span> Contribute</button>
+                        <button onClick={() => {window.location.replace("https://github.com/amitanshusahu")}}><span className="icon">💛</span> Follow</button>
                     </div>
                 </div>
-
+                
                 <div className="readme">
-
+                    <img src={ss} />
                 </div>
             </StyledSection>
         </>
@@ -27,7 +28,7 @@ export default function Home(){
 
 const StyledSection = styled.section`
     .center{
-        padding-top: 30px;
+        padding: 30px 0 30px 0;
         display: flex;
         gap: 30px;
         justify-content: center;
@@ -62,6 +63,16 @@ const StyledSection = styled.section`
                 border-bottom-left-radius: 10px;
             }
         }
+        }
+
+    }
+
+    .readme{
+        padding: 30px;
+        img{
+            border-radius: 15px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
     }
 `

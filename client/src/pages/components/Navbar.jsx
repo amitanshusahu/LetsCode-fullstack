@@ -1,21 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../assets/loglo.webp";
 import userAvtar from "../../assets/user.png"
 import { Token } from "../../secrets";
 
 export default function Navbar() {
+
+    const navigate = useNavigate();
+
     return (
         <StyledDiv>
             <div className="links">
-                <div id="logo"><img src={logo} /> LetsCode</div>
-                <Link to="../Problemset">Problems</Link>
+                <div id="logo" onClick={() => {navigate("../")}}><img src={logo} /> LetsCode</div>
+                <Link to="../problemset">Problems</Link>
             </div>
 
             <div>
                 {
                     (Token === null)
-                        ? (<button>
+                        ? (<button onClick={() => {navigate("../login")}}>
                             Login
                         </button>)
 
@@ -42,6 +45,7 @@ const StyledDiv = styled.div`
         display: flex;
         align-items: center;
         font-weight: bold;
+        cursor: pointer;
     }
 
     img{

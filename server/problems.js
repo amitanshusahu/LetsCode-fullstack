@@ -80,4 +80,58 @@ void add(int num1, int num2)
             output: 3
         }
     ]
-}];
+},
+{
+    problemId: 3,
+    title: "difference of 2 Numbers",
+    difficulty: "Medium",
+    desc: {
+        info: "the function takes 2 parameter they are 2 numbers as input and prints the difference to the console as output",
+        ex1: "input: 1, 2 \n output: 1",
+        ex2: "input: 3, 2 \n output: 1",
+        note: "it should complete in O(1), and some info... blala"
+    },
+    submissions: 12,
+    accepted: 10,
+    acceptance: "90%",
+    template: {
+        js:
+            `function diff(num1, num2){
+    /* code here */
+    
+}`,
+        c:
+            `#include<stdio.h>
+
+void diff(int num1, int num2)
+{
+    // code here
+}
+
+/* only write the main function when you want to debug the code using the "Run" button */`,
+        cpp:
+            `#include<iostream>
+using namespace std;
+
+void diff(int num1, int num2)
+{
+    //code here
+}
+
+/* only write the main function when you want to debug the code using the "Run" button*/
+`
+    },
+    solutionfunction: "diff",
+    testcases: [
+        {
+            input: [2, 3],
+            output: 1
+        },
+        {
+            input: [1, 2],
+            output: 1
+        }
+    ]
+}
+
+];

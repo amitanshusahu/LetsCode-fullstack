@@ -48,7 +48,9 @@ export default function Problemset() {
                         {
                             problems.map(ele => {
                                 return (
-                                    <tr onClick={() => { navigate(`/problem?pid=${ele.problemId}`) }}>
+                                    <tr onClick={() => { 
+                                        if(Token === null) alert("Login To Solve Problems");
+                                        navigate(`/problem?pid=${ele.problemId}`) }}>
                                         <td>{ele.problemId + " . " + ele.title}</td>
                                         {getdifficultyColor(ele.difficulty.toLocaleLowerCase(), "td")}
                                         <td>{ele.acceptance}</td>
