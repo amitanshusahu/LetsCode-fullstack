@@ -17,6 +17,11 @@ https://github.com/amitanshusahu/LetsCode-fullstack/assets/83657737/72afd4c1-a59
 - nodjs 
 - npm
 - port `5672`, `3010` are available
+- pull docker images- node and gcc
+```bash
+docker pull node
+docker pull gcc
+```
 
 
 ## 📌 Setting Up The Project
@@ -42,5 +47,7 @@ cd ../client && npm i
 # the following command will show a link click it
 npm run dev
 ```
+## 🗒️ Refrence
+- [Run user submitted code in a backend and send response back to the client](https://github.com/amitanshusahu/node-containerized-execution-env)
 
-<h2 align="center"> Contribute & Support With A <mark> Star </mark> ⭐ <h2>
+<h2 align="center"> ⭐ Star the Repo <h2>
