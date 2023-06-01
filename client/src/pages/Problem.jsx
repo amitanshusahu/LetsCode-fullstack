@@ -33,7 +33,7 @@ export default function Problem() {
     const init = async () => {
         const response = await fetch(`http://localhost:3010/problem?problemid=` + pid, {
             headers: {
-                "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW1pdGgiLCJpYXQiOjE2ODUyMTg4MzF9.W-sOZLi1xrZiW8QmL8BKFLlsApzt9Qe17J7kX0bJV9o"
+                "Authorization": `${Token}`
             },
             method: "GET",
         });
@@ -89,7 +89,7 @@ export default function Problem() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
-                "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW1pdGgiLCJpYXQiOjE2ODUyMTg4MzF9.W-sOZLi1xrZiW8QmL8BKFLlsApzt9Qe17J7kX0bJV9o"
+                "Authorization": `${Token}`
             },
             body: JSON.stringify(data)
         }
@@ -161,7 +161,7 @@ export default function Problem() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8',
-                "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYW1pdGgiLCJpYXQiOjE2ODUyMTg4MzF9.W-sOZLi1xrZiW8QmL8BKFLlsApzt9Qe17J7kX0bJV9o"
+                "Authorization": `${Token}`
             },
             body: JSON.stringify(data)
         }
